@@ -1,13 +1,11 @@
 <script lang="ts">
     import AddLine from "./AddLine.svelte";
-    import {getUsers, updateUser} from "../../../tsLibs/ManageUsers";
+    import {getUsersAsync, updateUserAsync} from "../../../tsLibs/ManageUsers";
     import type {User} from "../../../tsLibs/Model/UserModel";
     import Line from "./Line.svelte";
 
-    let users = getUsers();
-    const updateUsers = (user : User) => {users = updateUser(user,users)};
-    const deleteUser  = (user : User) => {users = updateUser(user,users)};
-    const addUser = (user : User) => users = updateUser(user,users);
+    let users;
+    getUsersAsync((res)=>users = res)
 </script>
 
 

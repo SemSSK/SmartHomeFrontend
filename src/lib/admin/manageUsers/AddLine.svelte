@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { addUser } from "../../../tsLibs/ManageUsers";
+    import { addUserAsync } from "../../../tsLibs/ManageUsers";
     import type { User } from "../../../tsLibs/Model/UserModel";
 
 
     export let users : Array<User>;
     let username : string = "";
     const updateAndClear = () => {
-        users = addUser(username,users);
+        addUserAsync(username,users,(res)=>{users = res});
         username = "";
     }
 </script>
