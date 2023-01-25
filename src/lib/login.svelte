@@ -1,6 +1,7 @@
 <script lang="ts">
     import { navigate } from 'svelte-routing';
     import {login} from '../tsLibs/login';
+    import type { User } from '../tsLibs/Model/UserModel';
     import ErrorPanel from './ErrorPanel.svelte';
 
     let username = "";
@@ -12,7 +13,8 @@
     }
 
     const submit = (username : string,password: string) => {
-        const res = login(username,password);
+        let res: User;
+        login(username,password,(user)=>{res = user});
         if(!res){
             loginFailed = true;
         }
@@ -51,7 +53,8 @@
         width: 90%;
         padding: 2%;
         background-color: inherit;
-        color: black;
+        color: #FFFFFFFF;
+        font-size: medium;
         border: none;
         border-bottom: solid #FEFEFF 1px;
     }
