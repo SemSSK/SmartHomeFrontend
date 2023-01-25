@@ -1,0 +1,1 @@
+export const getAlert = () => [(new Date()).toUTCString()]
