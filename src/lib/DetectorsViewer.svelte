@@ -1,17 +1,17 @@
 <script lang="ts">
-    import {fromCelisiusToAllUnits,getTemperature} from '../tsLibs/temperatureModel';
+    import {getTemperatureAsync} from '../tsLibs/temperatureModel';
     import {affectHumidity} from '../tsLibs/humidityModel';
     import { onMount } from 'svelte';
 
-    let temperature = getTemperature();
     let humidity;
-    let temps = fromCelisiusToAllUnits(temperature);
-
+    let temperature;
+    affectHumidity(val=>humidity = val);
+    getTemperatureAsync((temp)=>temperature = temp);
+    
     onMount(()=>{
         const interval = setInterval(()=>{
-            temperature = getTemperature();
             affectHumidity(val=>humidity = val);
-            temps = fromCelisiusToAllUnits(temperature);
+            getTemperatureAsync((temp)=>temperature = temp);
         },500)
         return () => clearInterval(interval);
     })
@@ -21,9 +21,9 @@
 
     <div class="temp disp">
         <div></div>
-        <h2>{temps.celsius}</h2>
-        <h2>{temps.fahrenheit}</h2>
-        <h2>{temps.kelvin}</h2>
+        <h2>{temperature.celsius}</h2>
+        <h2>{temperature.fahrenheit}</h2>
+        <h2>{temperature.kelvin}</h2>
     </div>
 
     <div class="hum disp">

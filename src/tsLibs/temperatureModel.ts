@@ -10,7 +10,7 @@ const convertCelsiusToKelvin = (celsius:number) => celsius + 273.15;
 
 const convertCelsiusToFarenheit = (celsius:number) => celsius * (9/3) + 32;
 
-export function fromCelisiusToAllUnits(celsius:number) : temperatureUnits{
+function fromCelisiusToAllUnits(celsius:number) : temperatureUnits{
     return {
         celsius : celsius.toString() + "°C",
         kelvin : convertCelsiusToKelvin(celsius).toString() + " K",
@@ -18,4 +18,8 @@ export function fromCelisiusToAllUnits(celsius:number) : temperatureUnits{
     };
 }
 
-export const getTemperature = () => Math.floor(getRandomInRange(20,25));
+const getTemperature = () => Math.floor(getRandomInRange(20,25));
+
+export const getTemperatureAsync = (callback: (arg0:temperatureUnits)=>void) => {
+    callback(fromCelisiusToAllUnits(getTemperature()));
+} 
