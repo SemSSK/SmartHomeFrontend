@@ -1,16 +1,16 @@
 <script lang="ts">
     import {fromCelisiusToAllUnits,getTemperature} from '../tsLibs/temperatureModel';
-    import {getHumidity} from '../tsLibs/humidityModel';
+    import {affectHumidity} from '../tsLibs/humidityModel';
     import { onMount } from 'svelte';
 
     let temperature = getTemperature();
-    let humidity = getHumidity().toString() + " g/m3";
+    let humidity;
     let temps = fromCelisiusToAllUnits(temperature);
 
     onMount(()=>{
         const interval = setInterval(()=>{
             temperature = getTemperature();
-            humidity = getHumidity().toString() + " g/m3";
+            affectHumidity(val=>humidity = val);
             temps = fromCelisiusToAllUnits(temperature);
         },500)
         return () => clearInterval(interval);
