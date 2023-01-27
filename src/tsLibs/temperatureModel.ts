@@ -25,12 +25,7 @@ const getTemperature = () => Math.floor(getRandomInRange(20,25));
 export const getTemperatureAsync = (callback: (arg0:temperatureUnits)=>void) => {
     axios.get(getServerUrl() + "temperature",axiosConfig())
         .then((res)=>{
-            if(res.status === 403){
-                navigate("/")
-            }
-            else{
-                console.log(fromCelisiusToAllUnits(parseInt(res.data)))
-                callback(fromCelisiusToAllUnits(parseInt(res.data)));
-            }
+            callback(fromCelisiusToAllUnits(parseInt(res.data)));
         })
+        .catch(()=>navigate("/"))
 } 

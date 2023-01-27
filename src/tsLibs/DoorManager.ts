@@ -5,13 +5,11 @@ import { axiosConfig, getServerUrl } from "./core";
 
 export const getDoorState = (setDoorState : (v:boolean)=>void)=>{
     axios.get(getServerUrl() + "lock",axiosConfig())
-         .then((res)=>{
-            if(res.status === 403){
-                navigate("/");
-            }
-            else{
-                setDoorState(res.data.state);
-            }
+        .then((res)=>{
+            setDoorState(res.data.state);
+        })
+        .catch((res)=>{
+            navigate("/");
         })
 };
 export const openDoor = (setDoorState : (v:boolean)=>void) => {
@@ -28,5 +26,5 @@ export const closeDoor = (setDoorState: (v:boolean)=>void) => {
 };
 
 export const askForDoorToOpen = ()=>{
-    axios.post(getServerUrl() + "opendoor",axiosConfig());
+    axios.post(getServerUrl() + "opendoor",{},axiosConfig());
 };

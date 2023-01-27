@@ -1,11 +1,15 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import { getRequest } from "../../tsLibs/DoorRequestManage";
     import type { DoorRequest } from "../../tsLibs/Model/DoorReqModel";
 
 
     let requests : Array<DoorRequest>= [];
-    getRequest((arr)=>{
-        requests = arr
+    onMount(()=>{
+        const interval = setInterval(()=>{
+            getRequest((arr)=> requests = arr);
+        },500)
+        return () => clearInterval(interval);
     })
 </script>
 
@@ -20,7 +24,7 @@
         {#each requests as request}
             <tr>
                 <td>{request.username}</td>
-                <td>{request.madeAt}</td>
+                <td>{request.time}</td>
             </tr>
         {/each}
     </tbody>
