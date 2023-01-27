@@ -1,6 +1,16 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import { getAlert } from "../../tsLibs/MovementDetection";
-    let moves = getAlert();
+    let moves = [];
+    const setMoves = (mvs:Array<string>)=>{
+        moves = mvs;
+    }
+    onMount(()=>{
+        const interval = setInterval(()=>{
+            getAlert(setMoves);
+        },500)
+        return () => clearInterval(interval);
+    })
 </script>
 
 <table>
