@@ -1,9 +1,7 @@
 <script>
     import {Link, navigate} from 'svelte-routing';
-    const onClick = ()=>{
-        localStorage.removeItem("Auth");
-        navigate("/");
-    }
+    import { logout } from '../tsLibs/login';
+    const onClick = ()=>logout();
 </script>
 
 <div class="appbar">

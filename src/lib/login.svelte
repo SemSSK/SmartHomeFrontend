@@ -8,10 +8,6 @@
     let password = "";
     let loginFailed = false;
 
-    const setKey = (key:string)=>{
-        localStorage.setItem("Auth",key);
-    }
-
     const submit = (username : string,password: string) => {
         let res: User;
         login(username,password,(user)=>{res = user});
@@ -19,11 +15,9 @@
             loginFailed = true;
         }
         else if(res.isAdmin){
-            setKey(res.username);
             navigate("/admin");
         }
         else{
-            setKey(res.username);
             navigate("/visitor")
         }
     }
