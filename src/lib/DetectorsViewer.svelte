@@ -3,8 +3,8 @@
     import {affectHumidity} from '../tsLibs/humidityModel';
     import { onMount } from 'svelte';
 
-    let humidity;
-    let temperature;
+    let humidity = "";
+    let temperature = {celsius:"",kelvin:"",fahrenheit:""};
     affectHumidity(val=>humidity = val);
     getTemperatureAsync((temp)=>temperature = temp);
     

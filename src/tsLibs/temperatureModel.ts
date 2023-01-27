@@ -1,4 +1,6 @@
-import { getRandomInRange } from "./core";
+import axios from "axios";
+import { navigate } from "svelte-routing";
+import { axiosConfig, getRandomInRange, getServerUrl } from "./core";
 
 interface temperatureUnits{
     celsius : string,
@@ -21,5 +23,14 @@ function fromCelisiusToAllUnits(celsius:number) : temperatureUnits{
 const getTemperature = () => Math.floor(getRandomInRange(20,25));
 
 export const getTemperatureAsync = (callback: (arg0:temperatureUnits)=>void) => {
-    callback(fromCelisiusToAllUnits(getTemperature()));
+    axios.get(getServerUrl() + "temperature",axiosConfig())
+        .then((res)=>{
+            if(res.status === 403){
+                navigate("/")
+            }
+            else{
+                console.log(fromCelisiusToAllUnits(parseInt(res.data)))
+                callback(fromCelisiusToAllUnits(parseInt(res.data)));
+            }
+        })
 } 
