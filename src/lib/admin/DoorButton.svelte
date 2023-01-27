@@ -1,14 +1,15 @@
 <script lang="ts">
     import { closeDoor, getDoorState, openDoor } from "../../tsLibs/DoorManager";
 
-
-    let doorState = getDoorState();
-
-    const changeState = (doorState : boolean)=> doorState ? closeDoor() : openDoor(); 
+    
+    let doorState;
+    const setDoorState = (b:boolean)=>doorState = b;
+    getDoorState(setDoorState);
+    const changeState = (doorState : boolean)=> doorState ? closeDoor(setDoorState) : openDoor(setDoorState); 
     
 </script>
 
-<button on:click={()=> doorState = changeState(doorState)}>
+<button on:click={()=> changeState(doorState)}>
     <div class={doorState ? "openDoor" : "closedDoor"}>
     </div>
 </button>
