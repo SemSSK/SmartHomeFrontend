@@ -4,7 +4,7 @@ import { axiosConfig, getServerUrl } from "./core";
 
 
 export const getDoorState = (setDoorState : (v:boolean)=>void)=>{
-    axios.get(getServerUrl() + "lock",axiosConfig())
+    axios.get(getServerUrl() + "lockstate",axiosConfig())
         .then((res)=>{
             setDoorState(res.data.state);
         })

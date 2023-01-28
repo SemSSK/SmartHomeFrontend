@@ -5,7 +5,7 @@ import { axiosConfig, getServerUrl } from "./core"
 export const getAlert = (callback: (arg0: Array<any>) => void) => {
     axios.get(getServerUrl() + "alert",axiosConfig())
         .then((res)=>{
-            callback(res.data);
+            callback(res.data.reverse());
         })
         .catch(()=>navigate("/"))
 }

@@ -4,8 +4,11 @@
   import Login from './lib/login.svelte';
   import Main from './lib/visitor/Main.svelte';
   import Landing from './lib/admin/Landing.svelte';
+    import Test from './Test.svelte';
 
 </script>
+
+
 
 <main>
   <Router>

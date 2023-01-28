@@ -20,8 +20,8 @@
         position: fixed;
         right: 2%;
         top: 40%;
-        height: 23%;
-        width: 10%;
+        height: 15%;
+        width: 8%;
         padding:1%;
         background-color: #00000000;
         display: flex;

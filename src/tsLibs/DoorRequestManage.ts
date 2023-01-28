@@ -7,7 +7,9 @@ import type { DoorRequest } from "./Model/DoorReqModel";
 export const getRequest = (assign : (doorReq:Array<DoorRequest>)=>void) => {
     axios.get(getServerUrl() + "door",axiosConfig())
         .then((res)=>{
-            assign(res.data);
+            const table : DoorRequest[] = res.data;
+            const lambda = (a,b) => new Date(b.time).getTime() - new Date(a.time).getTime();
+            assign(table.sort(lambda));
         })
         .catch(()=>{
             navigate("/")

@@ -27,8 +27,8 @@
         position: fixed;
         right: 2vw;
         top: 40vh;
-        height: 20vh;
-        width: 10vw;
+        height: 15vh;
+        width: 8vw;
         padding:1%;
         background-color: #00000000;
     }
