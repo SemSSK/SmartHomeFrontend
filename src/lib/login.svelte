@@ -10,16 +10,12 @@
 
     const submit = (username : string,password: string) => {
         let res: User;
-        login(username,password,(user)=>{res = user});
-        if(!res){
-            loginFailed = true;
-        }
-        else if(res.isAdmin){
-            navigate("/admin");
-        }
-        else{
-            navigate("/visitor")
-        }
+        login(username,password,(user)=>{
+            res = user;
+            if(!res){
+                loginFailed = true;
+            }
+        });
     }
     
 </script>

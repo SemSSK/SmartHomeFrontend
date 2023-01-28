@@ -4,7 +4,7 @@
     import type {User} from "../../../tsLibs/Model/UserModel";
     import Line from "./Line.svelte";
 
-    let users;
+    let users = [];
     getUsersAsync((res)=>users = res)
 </script>
 

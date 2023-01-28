@@ -1,12 +1,12 @@
 export interface User{
-    id:number,
+    Id:number,
     username:string,
     isAdmin:boolean
 }
 
 export const makeUser = (id:number,username: string,isAdmin: boolean) : User => (
     {
-        id:id,
+        Id:id,
         username:username,
         isAdmin:isAdmin
     }

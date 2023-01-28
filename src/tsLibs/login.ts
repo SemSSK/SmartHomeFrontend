@@ -20,16 +20,12 @@ export const login = (username:string,password:string,setAccount:(usr:User)=>voi
     else{
         axios.post(url,user,axiosConfig())
             .then((res)=>{
-                if(res.status === 403){
-                    setAccount(null);
-                }
-                else{
-                    const u : User = res.data;
-                    setAuthKey(u);
-                    setAccount(u);
-                    u.isAdmin ? navigate("/admin") : navigate("/visitor");
-                }
+                const u : User = res.data;
+                setAuthKey(u);
+                setAccount(u);
+                u.isAdmin ? navigate("/admin/detectors") : navigate("/visitor");
             })
+            .catch(()=>setAccount(null))
     }
 }
 
