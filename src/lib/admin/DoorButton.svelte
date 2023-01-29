@@ -20,7 +20,7 @@
         position: fixed;
         right: 2%;
         top: 40%;
-        height: 15%;
+        height: 17%;
         width: 8%;
         padding:1%;
         background-color: #00000000;

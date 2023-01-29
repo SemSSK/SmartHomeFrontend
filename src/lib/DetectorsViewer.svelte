@@ -61,7 +61,7 @@
         align-items: center;
         justify-content: center;
         background-color: rgba(red, green, blue, #000);
-        box-shadow: 0px 0px 50px black;
+        box-shadow: 0px 0px 50px #1F51FF;
     }
     .disp:hover{
         transform: rotate(0deg) translate(0px,0px) scale(2);
@@ -74,8 +74,9 @@
 
   
     .hum{
-        background-image: url('../assets/humid.svg');
+        background-color: #00000000;
         background-size: cover;
+        border: solid 1px #4870ff;
         justify-content: start;
         transform: rotate(10deg) translate(-20px,100px);
         transition-duration: 0.5s;
@@ -91,7 +92,8 @@
 
     
     .temp{
-        background-image: url('../assets/temp.svg');
+        background-color: #00000000;
+        border: solid 1px #4870ff;
         background-size: cover;
         transform: rotate(-10deg) translate(20px,-100px);
         transition-duration: 0.5s;

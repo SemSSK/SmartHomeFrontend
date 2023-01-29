@@ -32,8 +32,9 @@
 <style>
     div{
         width: 10cm;
-        background-color: #0081AF;
-        border-radius: 0.3cm;
+        background-color: #00000000;
+        border: solid 1px #1F51FF;
+        border-radius: 0.15cm;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -46,7 +47,7 @@
         color: #FFFFFFFF;
         font-size: medium;
         border: none;
-        border-bottom: solid #FEFEFF 1px;
+        border-bottom: solid #1F51FF 1px;
     }
     input:focus{
         outline: none;

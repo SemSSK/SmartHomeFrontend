@@ -15,6 +15,8 @@
 
     .logout:hover{
         background-color: red;
+        box-shadow: 0px 0px 50px red;
+        border: none;
         border-radius: 0%;
     }
 

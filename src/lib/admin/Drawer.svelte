@@ -58,7 +58,7 @@
     }
 
     .drawer:hover{
-        background-color: rgba(57, 57, 109, 0.9);
+        background-color: #1b2f79a6;
         transform: translate(0,0);
     }
 
